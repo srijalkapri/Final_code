@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handyman Dashboard</title>
+    <link rel="stylesheet" href="pro.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="profile-image">
+            <img id="profilePic" src="default-profile.png" alt="Profile Image">
+            <input type="file" id="imageUpload" accept="image/*">
+        </div>
+        <div class="profile-info">
+            <form id="infoForm" action="handle_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="specialization">Specialization:</label>
+                <select id="specialization" name="specialization" required>
+                    <option value="">Select Specialization</option>
+                    <option value="pipe_installation">Pipe Installation</option>
+                    <option value="fixture_installation">Fixture Installation</option>
+                    <option value="leak_detection">Leak Detection</option>
+                    <option value="interior_painting">interior painting</option>
+                    <option value="exterior_painting">Exterior Painting</option>
+                    <option value="decorative_painting">Decorative Painting</option>
+                    <option value="furniture_making">Furniture Making</option>
+                    <option value="floor_installation">Floor Installation</option>
+                    <option value="repair_services">Repair Services</option>
+                    <option value="residential_moving">Residential Moving</option>
+                    <option value="commercial_moving">Commercial Moving</option>
+                    <option value="loading_and_unloading">Loading and Unloading</option>
+                    <option value="wiring">Wiring</option>
+                    <option value="emergency_electrical_repairs">Emergency Electrical Repairs</option>
+                    <option value="electrical_inspections">Electrical Inspections</option>
+                </select>
+
+                <label for="contact_email">Email:</label>
+                <input type="email" id="contact_email" name="contact_email" required>
+
+                <label for="contact_phone">Phone:</label>
+                <input type="tel" id="contact_phone" name="contact_phone" required>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('imageUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePic').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
